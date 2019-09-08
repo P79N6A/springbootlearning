@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>配置文件测试</artifactId>
+    <artifactId>configuretest</artifactId>
 
     <dependencies>
         <dependency>

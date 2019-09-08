@@ -30,6 +30,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+
         <!--  Mybatis配置-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
