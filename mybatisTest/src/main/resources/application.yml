@@ -1,0 +1,9 @@
+mybatis:
+  type-aliases-package: mybatistest.entity
+  mapper-locations: classpath:mapper/*.xml
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/jdbc?charset=utf8
+    username: root
+    password: Wangjj123.
