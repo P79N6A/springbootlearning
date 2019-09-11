@@ -1,0 +1,61 @@
+server:
+  port: 8080
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 100
+    jedis:
+      pool:
+        max-idle: 10
+        max-active: 8
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?charset=utf8
+    username: root
+    password: Wangjj123.
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 8
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+
+
+#缓存删除方案：用./redis-cli keys "前缀*" | xargs ./redis-cli del 批量删除
+#缓存
+ele:
+  #guava缓存支持暂时只支持秒级别的
+  guava:
+    #初始容量
+    initialCapacity: 200
+    #并发
+    concurrencyLevel: 5
+    #expireAfterAccess 指定项在一定时间内没有读写，会移除该key，下次取的时候从loading中取
+    #refreshAfterWrite 在指定项在一定时间内没有创建/覆盖时，会移除该key，下次取的时候从loading中取
+    #expireAfterWrite 在指定时间内没有被创建/覆盖，则指定时间过后，再次访问时，会去刷新该缓存，在新值没有到来之前，始终返回旧值
+    type: expireAfterWrite
+#mappercache缓存  key生成方式，类名+方法名+参数
+  mapper:
+    #  Redis  Guava
+    type: Redis
+    #如果有globalId，优先采用globalId作为key参数
+    globalid: true
+    globalidName: globalid
+    #缓存有效时间
+    expiretime: 1000
+    #缓存有效时间
+    nullexpiretime: 60
+    #TimeUnit的枚举值，字母都是大写！
+    unit: SECONDS
+    #布隆过滤器配置
+#  filter:
+#    expectedInsertions: 100
+#    fpp: 0.01
+
+
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: aopcachetest.entity
+
